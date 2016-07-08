@@ -1,0 +1,51 @@
+const int switch1Pin = 2;
+const int switch2Pin = 3;
+const int dwellPotPin = 4; //analog pin 4
+
+const int audioPin = 11;
+const int lightPin = 12;
+const int toyPin = 13;
+
+int dwell = 0;
+
+void setup() {
+
+pinMode(switch1Pin, INPUT);
+
+pinMode(switch2Pin, INPUT);
+
+pinMode(audioPin, OUTPUT);
+
+pinMode(lightPin, OUTPUT);
+
+pinMode(toyPin, OUTPUT);
+
+digitalWrite(switch1Pin, LOW);
+
+digitalWrite(switch2Pin, LOW);
+
+}
+
+void loop() {
+
+if((digitalRead(switch1Pin) == LOW) && (digitalRead(switch1Pin) == LOW)){
+
+digitalWrite(audioPin, LOW);
+digitalWrite(lightPin, LOW);
+digitalWrite(toyPin, LOW);
+
+}
+
+else{
+
+digitalWrite(audioPin, HIGH);
+digitalWrite(lightPin, HIGH);
+digitalWrite(toyPin, HIGH);
+
+dwell = analogRead(dwellPotPin);
+dwell = map(dwell, 0, 1023, 0, 60000); //scale to value between 0 and 60 seconds
+delay(dwell); //dwell time
+
+}
+
+}
