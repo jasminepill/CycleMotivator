@@ -1,6 +1,9 @@
-const int switch1Pin = 2;
-const int switch2Pin = 3;
+const int magSensor1 = 2;
+const int magSensor2 = 3;
 const int dwellPotPin = 4; //analog pin 4
+const int audioEnable = 5;
+const int lightEnable = 6;
+const int toyEnable = 7;
 
 const int audioPin = 11;
 const int lightPin = 12;
@@ -10,9 +13,15 @@ int dwell = 0;
 
 void setup() {
 
-pinMode(switch1Pin, INPUT);
+pinMode(magSensor1, INPUT);
 
-pinMode(switch2Pin, INPUT);
+pinMode(magSensor2, INPUT);
+
+pinMode(audioEnable, INPUT);
+
+pinMode(lightEnable, INPUT);
+
+pinMode(toyEnable, INPUT);
 
 pinMode(audioPin, OUTPUT);
 
@@ -28,7 +37,7 @@ digitalWrite(switch2Pin, LOW);
 
 void loop() {
 
-if((digitalRead(switch1Pin) == LOW) && (digitalRead(switch1Pin) == LOW)){
+if((digitalRead(magSensor1) == LOW) && (digitalRead(magSensor2) == LOW)){
 
 digitalWrite(audioPin, LOW);
 digitalWrite(lightPin, LOW);
@@ -38,9 +47,15 @@ digitalWrite(toyPin, LOW);
 
 else{
 
+if (digitalRead(audioEnable) == HIGH) {
 digitalWrite(audioPin, HIGH);
+}
+if (digitalRead(lightEnable) == HIGH) {
 digitalWrite(lightPin, HIGH);
+}
+if (digitalRead(toyEnable) == HIGH) {
 digitalWrite(toyPin, HIGH);
+}
 
 dwell = analogRead(dwellPotPin);
 dwell = map(dwell, 0, 1023, 0, 60000); //scale to value between 0 and 60 seconds
