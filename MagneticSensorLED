@@ -22,6 +22,7 @@ digitalWrite(ledPin, LOW);
 else{
 
 digitalWrite(ledPin, HIGH);
+delay(10000);
 
 }
 
