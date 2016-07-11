@@ -1,3 +1,4 @@
+//https://learn.adafruit.com/adafruit-wave-shield-audio-shield-for-arduino/wavehc-library
 /*
  * This example plays every .WAV file it finds on the SD card in a loop
  */
